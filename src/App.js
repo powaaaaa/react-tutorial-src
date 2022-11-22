@@ -11,6 +11,7 @@ function App() {
   const handleAddTodo = () => {
     //タスクを追加する
     const name = todoNameRef.current.value;
+    //入力無し対処
     if (name === "") return;
     setTodos((prevTodos) => {
       return [...prevTodos, {id: uuidv4(), name: name, completed: false}];
@@ -31,13 +32,13 @@ function App() {
   };
 
   return (
-    <>
+    <div>
       <TodoList todos={todos} toggleTodo={toggleTodo}/>
       <input type="text" ref={todoNameRef}/>
       <button onClick={handleAddTodo}>タスクを追加</button>
       <button onClick={handleClear}>完了したタスクを削除</button>
       <div>残りのタスク:{todos.filter((todo) => !todos.completed).length}</div>
-    </>
+    </div>
   );
 }
 
